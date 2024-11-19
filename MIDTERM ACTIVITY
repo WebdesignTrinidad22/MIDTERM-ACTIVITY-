@@ -1,0 +1,101 @@
+import java.util.Scanner;
+
+
+public class SizeStack {
+   int MAX_SIZE = 15;
+   int[] stack;
+    int top;
+
+
+    public SizeStack() {
+        stack = new int[MAX_SIZE];
+        top = -1;
+    }
+
+    public void push(int value) {
+        if (top < MAX_SIZE - 1) {
+            stack[++top] = value;
+            System.out.println(value + " pushed to stack.");
+        } else {
+            System.out.println("Stack overflow! Cannot push " + value);
+        }
+        Scanner scanner =new Scanner (System.in);
+        
+    }
+
+    public void pop() {
+        if (!isEmpty()) {
+            int poppedValue = stack[top--];
+            System.out.println(poppedValue + " popped from stack.");
+        } else {
+            System.out.println("Stack is empty! Cannot pop.");
+        }
+    }
+
+    public void peek() {
+        if (!isEmpty()) {
+            System.out.println("Top element is: " + stack[top]);
+        } else {
+            System.out.println("Stack is empty.");
+        }
+    }
+
+    public boolean isEmpty() {
+        return top == -1;
+    }
+   
+
+    public static void main(String[] args) {
+        SizeStack stack = new SizeStack();
+        Scanner scanner = new Scanner(System.in);
+        char choice;
+
+        do { 
+       
+            System.out.println("\n Choose an operation:");
+            System.out.println("A. PUSH");
+            System.out.println("B. POP");
+            System.out.println("C. PEEK");
+            System.out.println("D. ISEMPTY");
+            System.out.println("E. EXIT");
+            System.out.print("Enter your choice: ");
+            System.out.print("Enter a case (a, b, c, d, e): ");
+            char caseInput = scanner.next().charAt(0);
+
+            switch (caseInput) {
+                case 'a':
+                    System.out.print("Enter a number to push: ");
+                    int num = scanner.nextInt();
+                    stack.push(num);
+                    break;
+
+                case 'b':
+                    stack.pop();
+                    break;
+
+                case 'c':
+                    stack.peek();
+                    break;
+
+                case 'd':
+                    if (stack.isEmpty()) {
+                        System.out.println("Stack is empty.");
+                    } else {
+                        System.out.println("Stack is not empty.");
+                    }
+                    break;
+                case 'e':
+                    System.out.println("Existing...");
+                    return; 
+                default:
+                    System.out.println("Invalid case selected.");
+                    break;
+                
+                
+             }
+              
+        } while (true);
+         
+   }  
+    
+}
